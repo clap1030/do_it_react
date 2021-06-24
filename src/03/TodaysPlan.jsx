@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 
 class TodaysPlan extends Component {
   render() {
-    return <div className="message-container">놀러가자</div>;
+    const { onButtonClick, hasPlan } = this.props;
+    return (
+      <div className="body">
+        {hasPlan ? <TodaysPlan /> : null}
+        <button onClick={onButtonClick}>계획없음</button>
+      </div>
+    );
   }
 }
 
