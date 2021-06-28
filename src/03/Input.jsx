@@ -4,31 +4,28 @@ import PropTypes from 'prop-types';
 class Input extends PureComponent {
   constructor(props) {
     super(props);
+    this.setRef = this.setRef.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-
   handleChange(e) {
     const { name, onChange } = this.props;
     if (onChange) {
       onChange(name, e.target.value);
     }
   }
-
-  setRef(ref) {
-    this.ref = ref;
-  }
-
   componentDidMount() {
     if (this.props.autoFocus) {
       this.ref.focus();
     }
   }
-
   componentDidUpdate() {
     if (this.props.autoFocus) {
       this.ref.focus();
     }
   }
-
+  setRef(ref) {
+    this.ref = ref;
+  }
   render() {
     const { errorMessage, label, name, value, type, onFocus } = this.props;
     return (
@@ -58,7 +55,6 @@ Input.propTypes = {
   onFocus: PropTypes.func,
   autoFocus: PropTypes.bool,
 };
-
 Input.defaultProps = {
   onChange: () => {},
   onFocus: () => {},
